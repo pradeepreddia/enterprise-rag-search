@@ -1,0 +1,12 @@
+body { font-family: system-ui, sans-serif; background: #f6f7fb; margin: 0; color: #1d2333; }
+main { max-width: 760px; margin: 40px auto; padding: 0 16px; }
+.sub { color: #5b6275; margin-top: -8px; }
+.card { background: #fff; border-radius: 12px; padding: 16px 20px; margin: 16px 0; box-shadow: 0 1px 3px #0001; }
+.ask { display: flex; gap: 8px; }
+.ask input { flex: 1; padding: 10px; border: 1px solid #d5d9e3; border-radius: 8px; }
+button { background: #3b5bdb; color: #fff; border: 0; border-radius: 8px; padding: 10px 16px; cursor: pointer; }
+button.ghost { background: #eef1fb; color: #3b5bdb; margin-left: 8px; }
+.docs { margin-top: 12px; display: flex; gap: 6px; flex-wrap: wrap; }
+.docs span { background: #eef1fb; padding: 4px 10px; border-radius: 99px; font-size: 13px; }
+.cite { border-left: 3px solid #3b5bdb; padding-left: 10px; margin: 10px 0; }
+.cite p { margin: 4px 0; color: #5b6275; font-size: 14px; }
