@@ -4,7 +4,7 @@ Upload documents, ask questions in plain English, and get answers with citations
 
 I built this to understand each part of a retrieval-augmented generation (RAG) pipeline end to end: chunking, embeddings, vector search, and grounded prompting.
 
-![screenshot](docs/screenshot.png)
+![demo](docs/demo.gif)
 
 **Stack:** Python, Flask, NumPy, OpenAI API, React (Vite), Docker, pytest, GitHub Actions
 
@@ -74,7 +74,7 @@ Open the UI, click **Load sample docs**, and try "How many PTO days do employees
 cd backend && pytest -q
 ```
 
-Tests cover chunk overlap, vector ranking, citation output, and the empty-store case. They run on every push through GitHub Actions.
+Tests cover chunk overlap, vector ranking, citation output, the empty-store case, and that each sample question retrieves the right document. They run on every push through GitHub Actions.
 
 ## Project structure
 

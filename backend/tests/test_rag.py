@@ -39,3 +39,16 @@ def test_rag_returns_citations_offline():
 def test_empty_store():
     rag = RAGPipeline(embedder=HashEmbedder())
     assert rag.ask("anything")["citations"] == []
+
+
+@pytest.mark.parametrize("question,doc", [
+    ("How many PTO days do employees get?", "hr_handbook.md"),
+    ("When do deployments go out?", "onboarding.md"),
+    ("What should I use on public wifi?", "it_security.md"),
+])
+def test_sample_questions_hit_right_doc(question, doc):
+    from pathlib import Path
+    rag = RAGPipeline(embedder=HashEmbedder(), llm=lambda p: "ok")
+    for f in sorted((Path(__file__).resolve().parents[2] / "sample_docs").glob("*.md")):
+        rag.ingest(f.read_text(), f.name)
+    assert rag.ask(question)["citations"][0]["doc"] == doc

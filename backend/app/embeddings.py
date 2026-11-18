@@ -11,6 +11,11 @@ import re
 import numpy as np
 
 
+STOPWORDS = set("""a an the and or but if of to in on at by for with from as is are was were be been
+do does did have has had i me my we our you your it its this that these those what which who whom
+when where why how should can could would will shall may might must use used get gets not no""".split())
+
+
 class HashEmbedder:
     def __init__(self, dim: int = 512):
         self.dim = dim
@@ -19,6 +24,8 @@ class HashEmbedder:
         out = np.zeros((len(texts), self.dim), dtype=np.float32)
         for row, text in enumerate(texts):
             for tok in re.findall(r"[a-z0-9]+", text.lower()):
+                if tok in STOPWORDS:
+                    continue
                 idx = int(hashlib.md5(tok.encode()).hexdigest(), 16) % self.dim
                 out[row, idx] += 1.0
         return out
